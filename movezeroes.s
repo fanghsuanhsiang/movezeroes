@@ -40,7 +40,6 @@ moveZeroes:
     sw ra 0(sp)
     sw s0 4(sp)
     sw s1 8(sp)
-    #li s1 0                    #next non zero index = 0
     addi s2 x0 0                 # next = 0
     addi s3 x0 0                 # pre = 0
     loop:
@@ -49,9 +48,7 @@ moveZeroes:
         add t0 a0 t0             #nums + next*4
         lw t1 0(t0)              #t1 = nums[next]
         beq t1 x0 next_iter
-        #slli t2 s1 2             #next_nonzero_index * 4
         addi t2 t1 0             #temp = nums[next]
-        
         slli t3 s3 2             #pre * 4
         add t3 a0 t3             #nums + pre*4
         lw t4 0(t3)              #t4 = nums[pre]
